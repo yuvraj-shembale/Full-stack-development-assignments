@@ -1,74 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-    <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Yuvraj Shembale — Portfolio</title>
-  <!-- Bootstrap CSS -->
- 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-   body { padding-top: 60px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TradeHub | Global Marketplace</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  
-    <!-- Navbar (working with collapse and dropdown) -->
- 
- 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-   
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">Yuvraj Shembale</a>
-      
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span> 
+
+<header class="site-header">
+  <div class="container header-inner">
+    <h1 class="logo">TradeHub</h1>
+    <nav class="nav">
+      <button class="nav-btn" onclick="showSection('home')">Products</button>
+      <button class="nav-btn" onclick="showSection('cart')">Cart</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- LOGIN -->
+  <section id="login" class="auth-card show">
+    <h2>Sign in to TradeHub</h2>
+    <input id="username" class="input" placeholder="Business Email">
+    <input id="password" class="input" type="password" placeholder="Password">
+    <button class="btn btn-primary full" onclick="login()">Sign In</button>
+    <p id="loginMsg" class="msg"></p>
+  </section>
+
+  <!-- HOME -->
+  <section id="home">
+    <h2>Featured Products</h2>
+
+    <div class="products">
+      <div class="card">
+        <img src="Laptop.png" alt="Laptop">
+        <h3>Business Laptop</h3>
+        <p class="supplier">Supplier: TechGlobal</p>
+        <p class="price">₹1,00,000</p>
+        <button class="btn btn-primary" onclick="addToCart('Laptop',100000)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <img src="headphones.png" alt="Headphones">
+        <h3>Wireless Headphones</h3>
+        <p class="supplier">Supplier: AudioMax</p>
+        <p class="price">₹5,000</p>
+        <button class="btn btn-primary" onclick="addToCart('Headphones',5000)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <img src="phone.jpg" alt="Phone">
+        <h3>Premium Smartphone</h3>
+        <p class="supplier">Supplier: MobileCorp</p>
+        <p class="price">₹1,30,000</p>
+        <button class="btn btn-primary" onclick="addToCart('Mobile',130000)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART -->
+  <section id="cart">
+    <h2>Your Cart</h2>
+    <ul id="cartItems"></ul>
+    <p class="total" id="totalPrice"></p>
+    <button class="btn btn-primary" onclick="showSection('checkout')">Proceed to Checkout</button>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section id="checkout" class="auth-card">
+    <h2>Checkout</h2>
+    <input class="input" placeholder="Company Name">
+    <input class="input" placeholder="Shipping Address">
+    <button class="btn btn-primary full" onclick="placeOrder()">Place Order</button>
+  </section>
+
+  <!-- FINAL VIEW -->
+<section id="finalView" class="centered">
+  <h2>Order Summary</h2>
+
+  <div class="card">
+    <h3>Products</h3>
+    <ul id="finalItems"></ul>
+
+    <hr>
+
+    <p class="bill-amount" id="finalTotal"></p>
+
+    <div class="order-info">
+      <p><strong>Status:</strong> Confirmed</p>
+      <p><strong>Payment:</strong> Successful</p>
+    </div>
+
+    <button class="btn btn-success" onclick="showSection('home')">
+      Continue Shopping
     </button>
-      
-      <div class="collapse navbar-collapse" id="mainNav">
-        
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">More</a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreDropdown">
-              <li><a class="dropdown-item" href="#">Resume</a></li>
-              <li><a class="dropdown-item" href="#">Certificates</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#@@@@">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        </ul>
-      
-    </div>
-    </div>
-  </nav>
+  </div>
+</section>
 
-  <!-- Placeholder sections so anchors work -->
-  <main class="container mt-5">
-    <section id="skills" class="py-5">
-      <h2>Skills</h2>
-      <p>C,C++,Python</p>
-    </section>
-    <section id="projects" class="py-5">
-      <h2>Projects</h2>
-      <p>1. Built college campus in unreal engine</p>
-      <p>2. Blockchain based agricultural supply chain management</p>
-    </section>
-    <section id="@@@@" class="py-5">
-      <h2>Contact</h2>
-      <p>Email: yuvraj.shembale23@pccoepune.org </p>
-    </section>
-    <section id="about" class="py-5">
-      <h2>About</h2>
-      <p>T.Y Student at PCCOE PUNE</p>
-    </section>
-  </main>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</main>
+
+<footer class="site-footer">
+  © <span id="year"></span> TradeHub. All rights reserved.
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
